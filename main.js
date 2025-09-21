@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gameState[clickedCellIndex] = currentPlayer;
         clickedCell.textContent = currentPlayer;
+        clickedCell.classList.add(currentPlayer);
 
-        checkWin()
+        checkWin();
     }
 
     function checkWin() {
@@ -44,19 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (roundWon) {
-            statusDisplay.textContent = messages.gameWon;
+            statusDisplay.textContent = messages.gameWon();
+            statusDisplay.classList.add('game-over');
             gameActive = false;
             return;
         }
 
         if (!gameState.includes('')) {
-            statusDisplay.textContent = messages.gameDraw;
+            statusDisplay.textContent = messages.gameDraw();
+            statusDisplay.classList.add('game-over');
             gameActive = false;
             return;
         }
 
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        statusDisplay.textContent = messages.playerTurn;
+        statusDisplay.textContent = messages.playerTurn();
     }
 
     function highlightWinningCells(winningCells) {
@@ -69,11 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gameActive = true;
         currentPlayer = 'X';
         gameState = ['', '', '', '', '', '', '', '', ''];
-        statusDisplay.textContent = messages.playerTurn;
+        statusDisplay.textContent = messages.playerTurn();
+        statusDisplay.classList.remove('game-over');
         cells.forEach(cell => {
             cell.textContent = '';
+            cell.classList.remove('winner', 'X', 'O');
         });
     }
 
     cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+    restartButton.addEventListener('click', handleRestartGame);
 });

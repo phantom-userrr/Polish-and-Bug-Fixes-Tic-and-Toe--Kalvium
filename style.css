@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,75 +7,103 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: #333;
 }
 
 .container {
     text-align: center;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
 }
 
 h1 {
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .status {
     margin-bottom: 2rem;
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.25rem;
+    min-height: 1.5em;
+    font-weight: 400;
 }
 
 .game-board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 2rem;
 }
 
 .cell {
     width: 100px;
     height: 100px;
-    background-color: #f8f8f8;
-    border: 2px solid #333;
-    border-radius: 5px;
+    background-color: #f0f2f5;
+    border: none;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cell:hover {
-    background-color: #eee;
+    background-color: #e9ebee;
+    transform: translateY(-2px);
+}
+
+.cell.X {
+    color: #ff4136;
+}
+
+.cell.O {
+    color: #0074d9;
 }
 
 .restart-btn {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1rem;
-    background-color: #4CAF50;
+    font-weight: 600;
+    background-color: #0074d9;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .restart-btn:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.restart-btn:active {
+    transform: translateY(0);
 }
 
 /* Winner styles */
 .cell.winner {
-    background-color: #90EE90;
-    color: #006400;
+    background-color: #2ecc40;
+    color: white;
+}
+
+.status.game-over {
+    font-weight: 600;
+    color: #ff4136;
 }
